@@ -4,8 +4,10 @@ import com.nexttools.view.buttons.SaveButton;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 
-public class Generator {
+public class ScheduleGenerator {
     private final JFrame frame;
     private final JPanel panel;
 
@@ -27,7 +29,7 @@ public class Generator {
 
     private final SaveButton save;
 
-    public Generator() {
+    public ScheduleGenerator() {
         frame = new JFrame();
         panel = new JPanel();
 
@@ -53,6 +55,14 @@ public class Generator {
     }
 
     private void setFrame() {
+        frame.addWindowListener(
+                new WindowAdapter() {
+                    public void windowClosing(WindowEvent e) {
+                        System.exit(0);
+                    }
+                }
+        );
+
         /* Initialize all panel data */
         setPanel();
 
@@ -60,10 +70,11 @@ public class Generator {
         frame.add(panel);
 
         /* Set the size of the frame */
-        frame.setPreferredSize(new Dimension(450, 160));
+        frame.setPreferredSize(new Dimension(450, 300));
 
         /* Set minimum size*/
-        frame.setResizable(false);
+        frame.setMaximumSize(new Dimension(450, 300));
+//        frame.setResizable(false);
 
         /* Try to make all the components at or above their preferred size */
         frame.pack();
@@ -84,7 +95,7 @@ public class Generator {
 
         layout.setHorizontalGroup(
                 layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(GroupLayout.Alignment.CENTER)
+                        .addGroup(layout.createParallelGroup(GroupLayout.Alignment.TRAILING)
                                 .addComponent(mondayLabel)
                                 .addComponent(tuesdayLabel)
                                 .addComponent(wednesdayLabel)
@@ -94,7 +105,7 @@ public class Generator {
                                 .addComponent(sundayLabel)
                                 .addComponent(save)
                         )
-                        .addGroup(layout.createParallelGroup(GroupLayout.Alignment.CENTER)
+                        .addGroup(layout.createParallelGroup(GroupLayout.Alignment.TRAILING)
                                 .addComponent(mondayField)
                                 .addComponent(tuesdayField)
                                 .addComponent(wednesdayField)
@@ -106,35 +117,35 @@ public class Generator {
         );
         layout.setVerticalGroup(
                 layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(GroupLayout.Alignment.CENTER)
+                        .addGroup(layout.createParallelGroup(GroupLayout.Alignment.TRAILING)
                                 .addComponent(mondayLabel)
                                 .addComponent(mondayField)
                         )
-                        .addGroup(layout.createParallelGroup(GroupLayout.Alignment.CENTER)
+                        .addGroup(layout.createParallelGroup(GroupLayout.Alignment.TRAILING)
                                 .addComponent(tuesdayLabel)
                                 .addComponent(tuesdayField)
                         )
-                        .addGroup(layout.createParallelGroup(GroupLayout.Alignment.CENTER)
+                        .addGroup(layout.createParallelGroup(GroupLayout.Alignment.TRAILING)
                                 .addComponent(wednesdayLabel)
                                 .addComponent(wednesdayField)
                         )
-                        .addGroup(layout.createParallelGroup(GroupLayout.Alignment.CENTER)
+                        .addGroup(layout.createParallelGroup(GroupLayout.Alignment.TRAILING)
                                 .addComponent(thursdayLabel)
                                 .addComponent(thursdayField)
                         )
-                        .addGroup(layout.createParallelGroup(GroupLayout.Alignment.CENTER)
+                        .addGroup(layout.createParallelGroup(GroupLayout.Alignment.TRAILING)
                                 .addComponent(fridayLabel)
                                 .addComponent(fridayField)
                         )
-                        .addGroup(layout.createParallelGroup(GroupLayout.Alignment.CENTER)
+                        .addGroup(layout.createParallelGroup(GroupLayout.Alignment.TRAILING)
                                 .addComponent(saturdayLabel)
                                 .addComponent(saturdayField)
                         )
-                        .addGroup(layout.createParallelGroup(GroupLayout.Alignment.CENTER)
+                        .addGroup(layout.createParallelGroup(GroupLayout.Alignment.TRAILING)
                                 .addComponent(sundayLabel)
                                 .addComponent(sundayField)
                         )
-                        .addGroup(layout.createParallelGroup(GroupLayout.Alignment.CENTER)
+                        .addGroup(layout.createParallelGroup(GroupLayout.Alignment.TRAILING)
                                 .addComponent(save)
                         )
         );

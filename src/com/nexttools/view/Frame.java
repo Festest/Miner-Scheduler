@@ -20,17 +20,17 @@ public class Frame extends JFrame {
 
         /* Create a view for the game */
         InputPanel inputPanel = new InputPanel(scheduler);
-        OutputPanel outputPanel = new OutputPanel(scheduler);
+//        OutputPanel outputPanel = new OutputPanel(scheduler);
         JPanel filler = new JPanel();
 
         /* Position each panel */
         inputPanel.setBounds(0,0,230,125);
-        outputPanel.setBounds(230,0,220,125);
+//        outputPanel.setBounds(230,0,220,125);
 
 
         /* Add the view to the frame */
         add(inputPanel);
-        add(outputPanel);
+//        add(outputPanel);
         add(filler);
 
 

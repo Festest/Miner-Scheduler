@@ -1,4 +1,4 @@
-package com.nexttools.model;
+package com.nexttools.view;
 
 import javax.swing.*;
 import javax.swing.filechooser.FileNameExtensionFilter;
@@ -15,12 +15,11 @@ public class FileChooser extends JPanel {
      * @return the fileChooser used to get filenames/directories
      */
     public static JFileChooser start() {
-        JFrame frame = new JFrame("");
+        JFrame frame = new JFrame("Select Directory");
 
-        FileNameExtensionFilter filter = new FileNameExtensionFilter("Graph Files", "graph");
+        FileNameExtensionFilter filter = new FileNameExtensionFilter("Schedules", "sch");
         JFileChooser chooser = new JFileChooser();
         chooser.setCurrentDirectory(new java.io.File("."));
-        chooser.setDialogTitle("Select Directory");
         chooser.setFileFilter(filter);
         chooser.setAcceptAllFileFilterUsed(false);
 

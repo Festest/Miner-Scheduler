@@ -20,5 +20,4 @@ public class SaveButton extends JButton {
         setHorizontalTextPosition(AbstractButton.CENTER);
         setMnemonic(KeyEvent.VK_S);
     }
-
 }
