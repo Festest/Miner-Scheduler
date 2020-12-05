@@ -1,5 +1,7 @@
 package com.nexttools.model;
 
+import java.util.concurrent.ScheduledExecutorService;
+
 public class Scheduler {
     private Schedule schedule;
 
@@ -17,13 +19,13 @@ public class Scheduler {
 
     private void schedulePause() {
         for (Long time: schedule.getPauseAt()) {
-
+            ScheduledExecutorService scheduledExecutorService;
         }
     }
 
     private void scheduleResume() {
         for (Long time: schedule.getResumeAt()) {
-
+            ScheduledExecutorService scheduledExecutorService;
         }
     }
 }

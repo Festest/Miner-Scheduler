@@ -44,73 +44,72 @@ public class Save extends AbstractAction{
         this.sundayField = sundayField;
     }
 
-//    /**
-//     * Write the data of the model into a file in the desired format
-//     */
-//    public void saveModelToFile() {
-//        try {
-//            JFileChooser chooser = FileChooser.start();
-//
-//            if (chooser.showSaveDialog(chooser) == JFileChooser.APPROVE_OPTION) {
-//                /* Paths & Names */
-//                String fileName = chooser.getSelectedFile().getName();
-//                String directory = String.valueOf(chooser.getCurrentDirectory());
-//
-//                this.saveFile = new FileWriter(new File(directory, fileName + ".graph"));
-//
-//                /* Data */
-//                saveFile.write(graphModel.sizeNodes() + " " + graphModel.sizeEdges());
-//                nodesToFile();
-//                edgesToFile();
-//                saveFile.close();
-//                System.out.println("Successfully wrote to the file.");
-//            }
-//        } catch (IOException e) {
-//            System.out.println("An error occurred.");
-//            e.printStackTrace();
-//        }
-//    }
-//
-//    /**
-//     * Write the information of the nodes to the file
-//     * @throws IOException
-//     */
-//    public void nodesToFile() throws IOException {
-//        for (int i = 0; i < graphModel.sizeNodes(); i++) {
-//            GraphNode node = graphModel.getNodes(i);
-//            saveFile.write("\n" + node.getX() + " " + node.getY() + " " + node.getWidth() + " " + node.getHeight() + " " + node.getName());
-//        }
-//    }
-//
-//    /**
-//     * Write the information of the edges to the file
-//     * @throws IOException
-//     */
-//    public void edgesToFile() throws IOException {
-//        for (int j = 0; j < graphModel.sizeEdges(); j++) {
-//            GraphEdge edge = graphModel.getEdges(j);
-//            GraphNode node1 = edge.getNode1();
-//            GraphNode node2 = edge.getNode2();
-//            int index1 = -1;
-//            int index2 = -1;
-//
-//            for (int k = 0; k < graphModel.sizeNodes(); k++) {
-//                if (node1 == graphModel.getNodes(k)) {
-//                    index1 = k;
-//                }
-//                if (node2 == graphModel.getNodes(k)) {
-//                    index2 = k;
-//                }
-//
-//                if (index1 != -1 && index2 != -1) {
-//                    break;
-//                }
-//            }
-//            saveFile.write("\n" + index1 + " " + index2);
-//        }
-//    }
-//
-//
+    /**
+     * Write the data of the model into a file in the desired format
+     */
+    public void saveModelToFile() {
+        try {
+            JFileChooser chooser = FileChooser.start();
+
+            if (chooser.showSaveDialog(chooser) == JFileChooser.APPROVE_OPTION) {
+                /* Paths & Names */
+                String fileName = chooser.getSelectedFile().getName();
+                String directory = String.valueOf(chooser.getCurrentDirectory());
+
+                this.saveFile = new FileWriter(new File(directory, fileName + ".sch"));
+
+                /* Data */
+                write();
+                saveFile.close();
+                System.out.println("Successfully wrote to the file.");
+            }
+        } catch (IOException e) {
+            System.out.println("An error occurred.");
+            e.printStackTrace();
+        }
+    }
+
+    void write() {
+        try {
+            saveFile.write("Monday\n");
+            String[] lines = this.mondayField.getText().split(", ");
+            for (String string: lines) {
+                saveFile.write(string + "\n");
+            }
+            saveFile.write("Tuesday\n");
+            lines = this.tuesdayField.getText().split(", ");
+            for (String string: lines) {
+                saveFile.write(string + "\n");
+            }
+            saveFile.write("Wednesday\n");
+            lines = this.wednesdayField.getText().split(", ");
+            for (String string: lines) {
+                saveFile.write(string + "\n");
+            }
+            saveFile.write("Thursday\n");
+            lines = this.thursdayField.getText().split(", ");
+            for (String string: lines) {
+                saveFile.write(string + "\n");
+            }
+            saveFile.write("Friday\n");
+            lines = this.fridayField.getText().split(", ");
+            for (String string: lines) {
+                saveFile.write(string + "\n");
+            }
+            saveFile.write("Saturday\n");
+            lines = this.saturdayField.getText().split(", ");
+            for (String string: lines) {
+                saveFile.write(string + "\n");
+            }
+            saveFile.write("Sunday\n");
+            lines = this.sundayField.getText().split(", ");
+            for (String string: lines) {
+                saveFile.write(string + "\n");
+            }
+        } catch (IOException e) {
+            System.err.println("Unable to write to new file");
+        }
+    }
 
     /**
      * Saves the current model to a file
@@ -118,7 +117,7 @@ public class Save extends AbstractAction{
      */
     @Override
     public void actionPerformed(ActionEvent e) {
-//        saveModelToFile();
+        saveModelToFile();
     }
 }
 

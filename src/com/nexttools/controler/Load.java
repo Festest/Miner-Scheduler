@@ -67,12 +67,12 @@ public class Load extends AbstractAction {
         System.out.println("Load successful!");
     }
 
-    private void parseString(DayOfWeek key, String string, Schedule schedule) {
-        String[] parsed = string.split(" ");
+    private void parseString(DayOfWeek day, String string, Schedule schedule) {
+        String[] parsed = string.split("->");
         if (parsed.length == 2) {
-            /* Get the next day of the week that matches the key */
+            /* Get the next day of the week that matches day */
             LocalDateTime ldt = LocalDateTime.now();
-            ldt = ldt.with(TemporalAdjusters.nextOrSame(key));
+            ldt = ldt.with(TemporalAdjusters.nextOrSame(day));
 
             Date date = java.util.Date.from(ldt.atZone(ZoneId.systemDefault()).toInstant());
 
@@ -85,6 +85,9 @@ public class Load extends AbstractAction {
 
             schedule.addPauseAt(pauseAt);
             schedule.addResumeAt(resumeAt);
+        }
+        else {
+            System.out.println("File corrupted");
         }
     }
 
